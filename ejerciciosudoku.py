@@ -24,17 +24,17 @@ def resolver_sudokus():
     input("Más?")                           
 def es_valido(i,j,k):
     global board                            #Para poder usar la variable board
-    for l in range(9):                      
-        if board[i][l] == k:
-            return False
-    for l in range(9):
-        if board[l][j] == k:
-            return False
-    for l in range(3):
-        for m in range(3):
-            if board[(i//3)*3+l][(j//3)*3+m] == k:
-                return False
-    return True
+    for l in range(9):                      #Recorre las filas    
+        if board[i][l] == k:          #Si el numero esta en la fila
+            return False              #No es valido
+    for l in range(9):                #Recorre las columnas
+        if board[l][j] == k:          #Si el numero esta en la columna
+            return False              #No es valido
+    for l in range(3):                #Recorre los cuadrados
+        for m in range(3):            #Recorre los cuadrados
+            if board[(i//3)*3+l][(j//3)*3+m] == k:              #Si el numero esta en el cuadrado
+                return False                       #No es valido
+    return True                                   #Si no esta en ninguna de las condiciones anteriores, es valido
 resolver_sudokus()
 
   
