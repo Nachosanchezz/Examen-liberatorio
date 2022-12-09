@@ -11,20 +11,20 @@ board = [
 ]
 def resolver_sudokus():
     global board
-    for i in range(9):
-        for j in range(9):
-            if board[i][j] == ".":
-                for k in range(1,10):
-                    if es_valido(i,j,str(k)):
-                        board[i][j] = str(k)
-                        resolver_sudokus()
-                        board[i][j] = "."
+    for i in range(9):                  #Recorre las filas
+        for j in range(9):              #Recorre las columnas
+            if board[i][j] == ".":      #Si encuentra un punto
+                for k in range(1,10):   #Recorre los numeros del 1 al 9
+                    if es_valido(i,j,str(k)):           #Si el numero es valido
+                        board[i][j] = str(k)       #Lo pone en el tablero
+                        resolver_sudokus()         #Vuelve a llamar a la funcion
+                        board[i][j] = "."          #Si no es valido, vuelve a poner el punto
                 return
     print(board)
-    input("Más?")
+    input("Más?")                           
 def es_valido(i,j,k):
-    global board
-    for l in range(9):
+    global board                            #Para poder usar la variable board
+    for l in range(9):                      
         if board[i][l] == k:
             return False
     for l in range(9):
